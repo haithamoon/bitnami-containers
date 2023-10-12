@@ -45,6 +45,8 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN chmod g+rwX /opt/bitnami
 
 COPY rootfs /
+# put the jar file in the current dir. ( same level of Dockerfile ) so it can be shipped inside the new image
+COPY ./dasniko.keycloak-2fa-sms-authenticator.jar /opt/bitnami/keycloak/providers/
 RUN /opt/bitnami/scripts/java/postunpack.sh
 RUN /opt/bitnami/scripts/keycloak/postunpack.sh
 ENV APP_VERSION="22.0.4" \
